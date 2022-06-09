@@ -1,6 +1,6 @@
-function SelectDropDown({ selectedLanguage }) {
+function SelectDropDown({ style, setShowModal, selectedLanguage }) {
   return (
-    <div className="select-drop-down">
+    <div className="select-drop-down" onClick={() => setShowModal(style)}>
       <input type="text" value={selectedLanguage} />
       <div className="down-arrow">
         <svg

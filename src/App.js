@@ -6,20 +6,37 @@ import Modal from "./components/Modal";
 import TextBox from "./components/TextBox";
 
 function App() {
+  const [showModal, setShowModal] = useState(null);
   const [inputLanguage, setInputLanguage] = useState("English");
   const [outputLanguage, setOutputLanguage] = useState("Polish");
+
   const handleClick = () => {
     setInputLanguage(outputLanguage);
     setOutputLanguage(inputLanguage);
   };
 
+  console.log("showModal", showModal);
+
   return (
     <div className="app">
-      <TextBox selectedLanguage={inputLanguage} style={`input`} />
-      <div className="arrow-container" onClick={handleClick}>
-        <Arrows />
-      </div>
-      <TextBox selectedLanguage={outputLanguage} style={`output`} />
+      {!showModal && (
+        <>
+          <TextBox
+            selectedLanguage={inputLanguage}
+            style={`input`}
+            setShowModal={setShowModal}
+          />
+          <div className="arrow-container" onClick={handleClick}>
+            <Arrows />
+          </div>
+          <TextBox
+            selectedLanguage={outputLanguage}
+            style={`output`}
+            setShowModal={setShowModal}
+          />
+        </>
+      )}
+      {showModal && <Modal setShowModal={setShowModal} />}
     </div>
   );
 }
