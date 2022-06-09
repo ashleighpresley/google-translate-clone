@@ -61,6 +61,9 @@ textarea {
 }
 
 .select-drop-down .down-arrow svg {
+  position: relative;
+  left: 265px;
+  top: -33px;
   width: 26px;
   height: 26px;
   fill: #8ab4f8;
