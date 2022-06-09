@@ -1,6 +1,9 @@
+import SelectDropDown from "./SelectDropDown";
+
 function TextBox({ style }) {
   return (
-    <div>
+    <div className={style}>
+      <SelectDropDown />
       <textarea
         placeholder={style === "input" ? "Enter Text" : "Translation"}
         disabled={style === "output"}
