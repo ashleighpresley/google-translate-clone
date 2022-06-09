@@ -1,7 +1,7 @@
-function SelectDropDown() {
+function SelectDropDown({ selectedLanguage }) {
   return (
     <div className="select-drop-down">
-      <input type="text" />
+      <input type="text" value={selectedLanguage} />
       <div className="down-arrow">
         <svg
           focusable="false"
