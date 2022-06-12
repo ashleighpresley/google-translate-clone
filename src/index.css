@@ -41,7 +41,6 @@ textarea {
   border: none;
   resize: none;
   padding: 18px;
-  width: 200px !important;
   height: 146px;
   border-radius: 10px;
   outline: none;
@@ -58,6 +57,7 @@ textarea {
   color: #8ab4f8;
   padding: 5px 15px;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .select-drop-down .down-arrow svg {
@@ -70,12 +70,13 @@ textarea {
 }
 .arrow-container {
   padding: 15px;
+  cursor: pointer;
 }
 
 .arrow-container svg {
   width: 26px;
   height: 26px;
-  fill: #5a5a5d;
+  fill: #bdc1c6;
 }
 
 .option-list {
@@ -87,6 +88,7 @@ textarea {
   display: flex;
   justify-content: center;
   padding: 10px;
+  cursor: pointer;
 }
 
 .search-bar input {
@@ -138,4 +140,19 @@ textarea {
   padding: 8px;
   width: 11px;
   color: #8ab4f8;
+}
+
+.button-container {
+  color: #bdc1c6;
+  padding: 8px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.input .delete {
+  position: relative;
+  left: 265px;
+  top: -185px;
+  font-size: 25px;
+  color: #bdc1c6;
 }

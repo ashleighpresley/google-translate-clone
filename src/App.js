@@ -11,6 +11,8 @@ function App() {
   const [inputLanguage, setInputLanguage] = useState("English");
   const [outputLanguage, setOutputLanguage] = useState("Polish");
   const [languages, setLanguages] = useState(null);
+  const [textToTranslate, setTextToTranslate] = useState("");
+  const [translatedText, setTranslatedText] = useState("");
 
   const getLanguages = () => {
     const options = {
@@ -36,7 +38,33 @@ function App() {
       });
   };
 
-  console.log("languages", languages);
+  const translate = () => {
+    const options = {
+      method: "GET",
+      url: "https://google-translate20.p.rapidapi.com/translate",
+      params: {
+        text: textToTranslate,
+        tl: outputLanguage,
+        sl: inputLanguage,
+      },
+      headers: {
+        "X-RapidAPI-Key": "dbcc677bc6msh31df28e8d9fe4e9p1065c4jsne25d8f6feb56",
+        "X-RapidAPI-Host": "google-translate20.p.rapidapi.com",
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        setTranslatedText(response.data.data.translation);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
+
+  console.log("translatedText", translatedText);
 
   useEffect(() => {
     getLanguages();
@@ -55,6 +83,9 @@ function App() {
             selectedLanguage={inputLanguage}
             style={`input`}
             setShowModal={setShowModal}
+            setTextToTranslate={setTextToTranslate}
+            textToTranslate={textToTranslate}
+            setTranslatedText={setTranslatedText}
           />
           <div className="arrow-container" onClick={handleClick}>
             <Arrows />
@@ -63,7 +94,11 @@ function App() {
             selectedLanguage={outputLanguage}
             style={`output`}
             setShowModal={setShowModal}
+            translatedText={translatedText}
           />
+          <div className="button-container" onClick={translate}>
+            <Button />
+          </div>
         </>
       )}
       {showModal && (
